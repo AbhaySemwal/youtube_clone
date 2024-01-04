@@ -2,12 +2,13 @@ import React from 'react'
 import styled from 'styled-components';
 import logo from '../img/logo.png';
 import { AccountCircleOutlined,Home, MovieOutlined, ExploreOutlined, SubscriptionsOutlined, VideoLibraryOutlined, HistoryOutlined, LibraryMusicOutlined, SportsBasketballOutlined, SportsEsportsOutlined, Newspaper, LiveTv, SettingsOutlined, FlagOutlined, HelpOutlineOutlined, SettingsBrightness } from '@mui/icons-material';
+import { Link } from 'react-router-dom';
 
 const Container=styled.div`
   flex:1;
-  background-color: #202020;
+  background-color: ${({theme})=>theme.bgLighter};
   height: 100vh;
-  color: white;
+  color: ${({theme})=>theme.text};
   font-size: 14px;
   position: sticky;
   top: 0;
@@ -35,7 +36,7 @@ const Item=styled.div`
 `;
 const Hr=styled.hr`
   margin: 15px 0px;
-  border: 0.5px solid #373737;
+  border: 0.5px solid ${({theme})=>theme.soft};
 `;
 const Login=styled.div`
 `;
@@ -52,14 +53,26 @@ const Button=styled.button`
   gap: 5px;
   align-items: center;
 `;
-const Menu = () => {
+const Title=styled.h2`
+  font-size: 14px;
+  font-weight: 500;
+  color: #aaaaaa;
+  margin-bottom: 20px;
+`;
+const Menu = ({darkMode,setDarkMode}) => {
+  const toggleTheme=()=>{
+    localStorage.setItem("darkmode", darkMode?"false":"true");
+    setDarkMode(!darkMode);
+  }
   return (
     <Container>
       <Wrapper>
-        <Logo>
-          <Img src={logo}/>
-          NewTube
-        </Logo>
+        <Link to="/" style={{textDecoration:"none",color:"inherit"}}>
+          <Logo>
+            <Img src={logo}/>
+            NewTube
+          </Logo>
+        </Link>
         <Item>
           <Home/>
           Home
@@ -87,6 +100,7 @@ const Menu = () => {
           <Button><AccountCircleOutlined/> SIGN IN</Button>
         </Login>
         <Hr/>
+        <Title>BEST OF NEWTUBE</Title>
         <Item>
           <LibraryMusicOutlined/>
           Music
@@ -124,9 +138,9 @@ const Menu = () => {
           <HelpOutlineOutlined/>
           Help
         </Item>
-        <Item>
+        <Item onClick={()=>toggleTheme()}>
           <SettingsBrightness/>
-          Light Mode
+          {darkMode?"Light Mode":"Dark Mode"}
         </Item>
       </Wrapper>
     </Container>
