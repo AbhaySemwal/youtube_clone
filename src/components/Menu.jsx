@@ -12,6 +12,11 @@ const Container=styled.div`
   font-size: 14px;
   position: sticky;
   top: 0;
+  overflow-y:scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 const Wrapper=styled.div`
   padding: 18px 26px;

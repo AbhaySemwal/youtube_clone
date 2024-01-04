@@ -35,6 +35,8 @@ const Input=styled.input`
   border: none;
   background-color: transparent;
   outline: none;
+  width: 100%;
+  color: ${({theme})=>theme.textSoft};
 `;
 const Button=styled.button`
   padding: 5px 15px;
