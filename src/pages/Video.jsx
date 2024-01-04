@@ -1,6 +1,8 @@
 import { AddTaskOutlined, ReplyOutlined, ThumbDownOutlined, ThumbUpOutlined } from '@mui/icons-material';
 import React from 'react'
 import styled from 'styled-components'
+import Comments from '../components/Comments';
+import Card from '../components/Card';
 
 const Container=styled.div`
   display: flex;
@@ -50,7 +52,7 @@ const Button=styled.button`
 
 const Hr=styled.hr`
   margin: 15px 0px;
-  border: 0.5px solid color ${({theme})=>theme.soft};
+  border: 0.5px solid ${({theme})=>theme.soft};
 `;
 
 const Recc=styled.div`
@@ -63,6 +65,9 @@ const Channel=styled.div`
 `;
 
 const ChannelInfo=styled.div`
+  display: flex;
+  gap: 20px;
+  color: ${({theme})=>theme.text};
 `;
 
 const Image=styled.img`
@@ -144,8 +149,21 @@ const Video = () => {
           </ChannelInfo>
           <Subscribe>SUBSCRIBE</Subscribe>
         </Channel>
+        <Hr/>
+        <Comments/>
       </Content>
-      <Recc>recc</Recc>
+      <Recc>
+        <Card type="sm"/>
+        <Card type="sm"/>
+        <Card type="sm"/>
+        <Card type="sm"/>
+        <Card type="sm"/>
+        <Card type="sm"/>
+        <Card type="sm"/>
+        <Card type="sm"/>
+        <Card type="sm"/>
+        <Card type="sm"/>
+      </Recc>
     </Container>
   )
 }
